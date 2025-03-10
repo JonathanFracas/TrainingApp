@@ -1,0 +1,43 @@
+@import '../colors';
+
+/* Style du sous-menu */
+.sub-menu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1em;
+	background-color: @background; /* Fond du sous-menu */
+	border-radius: 0.5em;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 10em; /* Largeur maximale du sous-menu */
+	margin: 0;
+	margin-right: 1em;
+}
+
+.sub-menu > div {
+	width: 100%;
+	margin-bottom: 0.5em;
+}
+
+.sub-menu > div > button {
+	width: 100%;
+	padding: 0.75em 1.5em;
+	background-color: @primary-green; /* Fond des boutons */
+	color: @text-light; /* Couleur du texte des boutons */
+	border: none;
+	border-radius: 0.3em;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sub-menu > div > button:hover {
+	background-color: @primary-green-dark; /* Fond des boutons au survol */
+	transform: translateY(-2px); /* Effet de survol */
+}
+
+.sub-menu > div > button:focus {
+	outline: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Ombre portée au focus */
+}

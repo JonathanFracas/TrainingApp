@@ -1,0 +1,55 @@
+.musculation-exercise-list {
+	display: flex;
+	flex-direction: row; /* Dispose le sous-menu à gauche et la section principale à droite */
+	padding: 1em;
+
+	.sub-menu
+	{
+		margin: 0;
+		margin-right: 1em;
+	}
+}
+
+.musculation-exercise-list main {
+	display: flex;
+	width: 100%; /* La section principale prend 75% de la largeur */
+
+	.exercises {
+		width: 100%;
+		background-color: @text-light;
+		padding: 1em;
+		border-radius: 0.5em;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+		h1
+		{
+			font-size: 2em;
+			text-align: center;
+			margin-bottom: 0.5em;
+		}
+	}
+}
+
+
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+thead th {
+	background-color: @primary-green;
+	color: @text-light;
+	padding: 0.75em;
+	border-bottom: 2px solid @primary-green-dark;
+}
+
+tbody td {
+	padding: 0.75em;
+	border-bottom: 1px solid @border-color;
+}
+
+tbody tr:nth-child(even) {
+	background-color: @background; /* Alternance de couleurs pour les lignes */
+}

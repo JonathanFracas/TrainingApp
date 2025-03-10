@@ -1,0 +1,70 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: laravel_app
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/var/www/html
+            - /var/www/html/vendor
+        depends_on:
+            - mysql
+        environment:
+            DB_CONNECTION: mysql
+            DB_HOST: mysql
+        networks:
+            - laravel-network
+
+    mysql:
+        image: mysql:8.0  # Utilisation de l'image MySQL
+        container_name: laravel_mysql
+        ports:
+            - "3306:3306"  # Port MySQL
+        environment:
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USERNAME: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
+        volumes:
+            - mysql_data:/var/lib/mysql
+        networks:
+            - laravel-network
+
+    node:
+        image: node:18
+        container_name: laravel_node
+        working_dir: /var/www/html
+        volumes:
+            - .:/var/www/html
+        command: bash -c "npm install && npm run dev"
+        ports:
+            - "5173:5173"  # Port pour Vite
+        depends_on:
+            - app
+        networks:
+            - laravel-network
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: laravel_phpmyadmin
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 0
+        ports:
+            - "8080:80"
+        depends_on:
+            - mysql
+        networks:
+            - laravel-network
+
+volumes:
+    mysql_data:
+
+networks:
+    laravel-network:
+        driver: bridge

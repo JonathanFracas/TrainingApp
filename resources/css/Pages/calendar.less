@@ -1,0 +1,142 @@
+.calendar-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 2em;
+	background-color: @background; /* Fond de la page calendrier */
+
+	.sessions
+	{
+		margin-top: 1em;
+		padding: 1.5em;
+		background-color: @text-light;
+		border-radius: 0.5em;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+
+		.musculation-sessions, .simple-sessions {
+			display: flex;
+			flex-direction: column;
+			gap: 20px; /* Espace entre les sessions */
+		}
+
+		.musculation-session, .simple-sessions {
+			background-color: #fff;
+			border: 1px solid #e0e0e0;
+			border-radius: 10px;
+			padding: 15px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+			button {
+				padding: 0.75em 1.5em;
+				margin-top: 1em;
+				border: none;
+				border-radius: 0.3em;
+				font-size: 1em;
+				cursor: pointer;
+				transition: background-color 0.3s ease, transform 0.3s ease;
+
+				&:focus {
+					outline: none;
+					box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+				}
+			}
+		}
+
+		.musculation-session h2 {
+			margin-bottom: 10px;
+			font-size: 1.5em;
+			color: #333;
+		}
+
+		.musuculation-session-exercises, .simple-session {
+			display: flex;
+			flex-wrap: wrap; /* Pour organiser les exercices sur plusieurs lignes si nécessaire */
+			gap: 10px; /* Espace entre les exercices */
+		}
+
+		.musuculation-session-exercise, .simple-session {
+			flex: 1 1 calc(33% - 20px); /* Répartir en trois colonnes avec un espace */
+			background-color: #fafafa;
+			border: 1px solid #ddd;
+			padding: 10px;
+			border-radius: 8px;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		}
+
+		.musuculation-session-exercise label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 5px;
+			font-size: 0.9em;
+		}
+
+		.musuculation-session-exercise input,
+		.simple-session input,
+		.musuculation-session-exercise select,
+		.simple-session select
+		{
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 0.9em;
+		}
+
+	}
+}
+
+.calendar-first-step
+{
+	display: flex;
+	flex-direction: row;
+}
+
+.calendar-configuration {
+	margin-right: 1em;
+	width: 35%; /* Filtres à gauche prennent 25% de la largeur */
+	display: flex;
+	flex-direction: column;
+	padding: 1.5em;
+	background-color: @text-light;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-filters {
+	display: flex;
+	flex-direction: column;
+}
+
+.calendar-filter {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1em;
+}
+
+.calendar-filter label {
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	color: @label-text-color;
+}
+
+.calendar-filter select {
+	padding: 0.5em;
+	border: 1px solid @border-color;
+	border-radius: 0.3em;
+	font-size: 1em;
+}
+
+.calendar {
+	width: 65%; /* Le calendrier occupe 70% de la largeur */
+	background-color: @text-light;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 1.5em;
+}
+
+.highlight {
+	color: @text-light;
+}
+
+

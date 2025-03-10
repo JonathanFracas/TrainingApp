@@ -1,0 +1,29 @@
+.save-button {
+	margin-top: 1em;
+	background-color: @primary-green;
+	color: @text-light;
+	border: none;
+	border-radius: 0.3em;
+	padding: 0.75em 1.5em;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: @primary-green-dark;
+	}
+
+	&:disabled {
+		background-color: @storm-gray; /* Couleur pour bouton désactivé */
+		cursor: not-allowed;
+	}
+}
+
+.copy-button {
+	background-color: @copy-yellow;
+
+	&:hover {
+		background-color: @copy-yellow-dark;
+		transform: translateY(-2px);
+	}
+}

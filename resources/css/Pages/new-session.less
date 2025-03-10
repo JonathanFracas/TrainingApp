@@ -1,0 +1,206 @@
+@import "../colors";
+
+.new-session {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding: 1em;
+
+	.main-new-running-session,
+	.main-new-hiit-session,
+	.main-new-flash-session,
+	.main-new-sport-session
+	{
+		margin: auto;
+		width: 60%;
+	}
+
+
+	main {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding: 1em;
+		background-color: @text-light;
+		border-radius: 0.5em;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+		h1 {
+			text-align: center;
+			font-weight: bold;
+			font-size: 2em;
+			color: @text-dark;
+			margin-bottom: 0.5em;
+		}
+
+		.date {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			width: 40%;
+			margin: auto;
+			margin-bottom: 1em;
+			margin-top: 1em;
+		}
+
+		.save {
+			text-align: center;
+
+			.save-button {
+				margin-top: 1em;
+				height: 3em;
+				width: 10em;
+				background-color: @primary-blue;
+				color: @text-light;
+				border: none;
+				border-radius: 0.3em;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+
+				&:hover {
+					background-color: @primary-blue-dark;
+				}
+			}
+		}
+
+		.exercises {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2em;
+		}
+
+		.exercise {
+			display: flex;
+			flex-direction: column;
+			width: 300px;
+			padding: 1.5em;
+			background-color: @text-light;
+			border-radius: 0.5em;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+			&:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			label {
+				font-weight: bold;
+				margin-bottom: 0.5em;
+				color: @label-text-color;
+			}
+
+			select,
+			input {
+				margin-bottom: 1em;
+				padding: 0.5em;
+				border: 1px solid @border-color;
+				border-radius: 0.3em;
+				font-size: 1em;
+			}
+
+			button {
+				height: 2.5em;
+				width: 100%;
+				color: @text-light;
+				border: none;
+				border-radius: 0.3em;
+				cursor: pointer;
+				text-align: center;
+				transition: background-color 0.3s ease;
+
+				&:hover {
+					background-color: @danger-red-dark;
+				}
+			}
+
+			.add-exercise {
+				margin: auto;
+				background-color: @primary-green;
+
+				&:hover {
+					background-color: @primary-green-dark;
+				}
+			}
+
+			.remove-exercise {
+				background-color: @danger-red;
+
+				&:hover {
+					background-color: @danger-red-dark;
+				}
+			}
+		}
+
+		.running,
+		.hiit,
+		.sport,
+		.flash {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			margin: auto;
+
+			input .date
+			{
+				margin: auto;
+			}
+
+			.flash-exercise {
+				display: flex;
+				margin: auto;
+				align-items: center; /* Aligne les éléments verticalement */
+				gap: 10px; /* Espace entre les éléments dans chaque ligne d'exercice */
+				padding: 10px;
+			}
+		}
+	}
+
+	.buttons-container {
+		display: flex;
+		justify-content: center; // or space-between, or flex-end
+
+		// Optionally, add this for a vertical layout
+		// flex-direction: column;
+		// align-items: center;
+
+		button {
+			padding: 0.75em 1.5em;
+			margin: 0 1em; // Horizontal space between buttons
+			background-color: @primary-blue;
+			color: @text-light;
+			border: none;
+			border-radius: 0.3em;
+			font-size: 1em;
+			cursor: pointer;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+
+			&:focus {
+				outline: none;
+				box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+			}
+		}
+
+
+
+		.add-exercise-button {
+			background-color: @add-exercise-blue;
+
+			&:hover {
+				background-color: @primary-blue-dark;
+				transform: translateY(-2px);
+			}
+		}
+
+		.copy-button {
+			background-color: @copy-yellow;
+
+			&:hover {
+				background-color: @copy-yellow-dark;
+				transform: translateY(-2px);
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": ["eslint:recommended", "plugin:react/recommended"],
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": ["react"],
+	"rules": {
+		// Règles de base ESLint
+		"no-unused-vars": "warn", // Avertir pour les variables non utilisées
+		"no-console": "warn", // Avertir pour les appels à console.log
+		"no-undef": "error", // Erreur pour les variables non définies
+		"no-var": "error", // Utiliser `let` ou `const` au lieu de `var`
+		"prefer-const": "warn", // Préférer `const` pour les variables non réassignées
+		"eqeqeq": ["error", "always"], // Toujours utiliser `===` et `!==`
+		"curly": "error", // Exiger des accolades pour les blocs de contrôle
+		"quotes": ["error", "double"], // Utiliser des guillemets simples
+		"semi": ["error", "always"], // Toujours utiliser des points-virgules
+
+		// Règles spécifiques à React
+		"react/jsx-uses-react": "error", // Prévenir les avertissements pour React non utilisé
+		"react/jsx-uses-vars": "error", // Prévenir les avertissements pour les variables JSX non utilisées
+		"react/prop-types": "warn", // Avertir si les PropTypes sont manquants
+		"react/react-in-jsx-scope": "error", // S'assurer que React est dans le scope pour JSX
+		"react/jsx-key": "error", // S'assurer que les éléments JSX dans des tableaux ont une clé
+		"react/jsx-no-target-blank": "error", // Empêcher les liens avec `target="_blank"` sans `rel="noopener noreferrer"`
+		"react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }], // Limiter les fichiers JSX à certaines extensions
+
+		// Règles de formatage (optionnel, si vous n'utilisez pas Prettier)
+		"indent": ["error", "tab"], // Utiliser des tabulations pour l'indentation
+		"linebreak-style": ["error", "unix"], // Utiliser des sauts de ligne Unix (LF)
+		"comma-dangle": ["error", "always-multiline"], // Ajouter une virgule après le dernier élément dans les objets/tableaux multilignes
+		"object-curly-spacing": ["error", "always"], // Espacer les accolades des objets
+		"array-bracket-spacing": ["error", "never"] // Pas d'espace dans les crochets de tableau
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}
