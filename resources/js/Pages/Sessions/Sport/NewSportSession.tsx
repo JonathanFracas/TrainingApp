@@ -33,7 +33,14 @@ export function NewSportSession() {
 	};
 
 	const save = async () => {
-		await SportController.saveSportSession(sportSession);
+		try {
+			await SportController.saveSportSession(sportSession);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

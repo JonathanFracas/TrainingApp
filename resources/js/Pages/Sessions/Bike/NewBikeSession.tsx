@@ -4,6 +4,7 @@ import { Utils } from "@/Utils/Utils";
 import DistanceSessionFields from "@/Pages/Sessions/Running/Components/DistanceSessionFields";
 import BikeSession from "@/Models/Distance/BikeSession";
 import BikeSessionsController from "@/Controllers/Bike/BikeSessionsController";
+import FlashSessionsController from "@/Controllers/Flash/FlashSessionsController";
 
 export function NewBikeSession() {
 	const [bikeSession, setBikeSession] = useState<BikeSession>(new RunningSession());
@@ -28,7 +29,14 @@ export function NewBikeSession() {
 	};
 
 	const save = async (): Promise<void> => {
-		await BikeSessionsController.save(bikeSession);
+		try {
+			await BikeSessionsController.save(bikeSession);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

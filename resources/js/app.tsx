@@ -1,5 +1,6 @@
 import "./bootstrap";
 import "../css/app.less";
+import "react-notifications-component/dist/theme.css";
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
@@ -8,6 +9,7 @@ import { ContextProvider } from "@/Contexts/ContextProvider";
 import Menu from "@/Pages/Components/Menu";
 
 import React from "react";
+import {ReactNotifications} from "react-notifications-component";
 
 
 const appName = import.meta.env.VITE_APP_NAME || "Training";
@@ -20,6 +22,7 @@ createInertiaApp({
 
 		root.render(
 			<ContextProvider>
+				<ReactNotifications />
 				<Menu />
 				<App {...props} />
 			</ContextProvider>,

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Elastic from "@/Models/Musculation/Elastic";
 import MusculationExercisesController from "@/Controllers/Musculation/MusculationExercisesController";
 import exp from "constants";
+import HiitController from "@/Controllers/Hiit/HiitController";
+import {Utils} from "@/Utils/Utils";
 
 export function NewElastic() {
 	const [elastic, setElastic] = useState(new Elastic());
@@ -12,7 +14,14 @@ export function NewElastic() {
 	};
 
 	const save = () => {
-		MusculationExercisesController.saveElastic(elastic);
+		try {
+			MusculationExercisesController.saveElastic(elastic);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

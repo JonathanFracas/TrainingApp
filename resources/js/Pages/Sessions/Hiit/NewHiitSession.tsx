@@ -4,6 +4,7 @@ import HiitSession from "@/Models/Hiit/HiitSession";
 import HiitType from "@/Models/Hiit/HiitType";
 import HiitController from "@/Controllers/Hiit/HiitController";
 import HiitFields from "@/Pages/Sessions/Hiit/Components/HiitFields";
+import MusculationSessionsController from "@/Controllers/Musculation/MusculationSessionsController";
 
 export function NewHiitSession() {
 	const [hiitTypes, setHiitTypes] = useState<HiitType[]>([]);
@@ -31,7 +32,14 @@ export function NewHiitSession() {
 	};
 
 	const save = async (): Promise<void> => {
-		await HiitController.saveHiitSession(hiitSession);
+		try {
+			await HiitController.saveHiitSession(hiitSession);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

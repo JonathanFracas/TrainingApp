@@ -3,6 +3,7 @@ import RunningSession from "@/Models/Distance/RunningSession";
 import { Utils } from "@/Utils/Utils";
 import RunningSessionsController from "@/Controllers/Running/RunningSessionsController";
 import DistanceSessionFields from "@/Pages/Sessions/Running/Components/DistanceSessionFields";
+import SportController from "@/Controllers/Sport/SportController";
 
 export function NewRunningSession() {
 	const [runningSession, setRunningSession] = useState(new RunningSession());
@@ -24,7 +25,14 @@ export function NewRunningSession() {
 	};
 
 	const save = async () => {
-		await RunningSessionsController.save(runningSession);
+		try {
+			await RunningSessionsController.save(runningSession);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

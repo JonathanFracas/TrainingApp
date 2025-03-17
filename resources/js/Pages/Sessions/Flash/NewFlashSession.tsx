@@ -6,6 +6,7 @@ import FlashSessionExercisesOrder from "@/Models/Flash/FlashSessionExercisesOrde
 import FlashSessionExercise from "@/Models/Flash/FlashSessionExercise";
 import { Utils } from "@/Utils/Utils";
 import Flash from "@/Pages/Sessions/Flash/Components/Flash";
+import HiitController from "@/Controllers/Hiit/HiitController";
 
 export function NewFlashSession() {
 	const [flashExercisesOrder, setFlashExercisesOrder] = useState<FlashSessionExercisesOrder[]>([]);
@@ -43,7 +44,14 @@ export function NewFlashSession() {
 	};
 
 	const save = async (): Promise<void> => {
-		await FlashSessionsController.save(flashSessionExercises, date);
+		try {
+			await FlashSessionsController.save(flashSessionExercises, date);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

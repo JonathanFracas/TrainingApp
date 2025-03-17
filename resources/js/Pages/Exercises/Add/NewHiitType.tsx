@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import HiitType from "@/Models/Hiit/HiitType";
 import HiitController from "@/Controllers/Hiit/HiitController";
+import MusculationExercisesController from "@/Controllers/Musculation/MusculationExercisesController";
+import {Utils} from "@/Utils/Utils";
 
 export function NewHiitType() {
 	const [hiitType, setHiitType] = useState(new HiitType());
@@ -10,7 +12,14 @@ export function NewHiitType() {
 	};
 
 	const save = () => {
-		HiitController.saveHiitType(hiitType);
+		try {
+			HiitController.saveHiitType(hiitType);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

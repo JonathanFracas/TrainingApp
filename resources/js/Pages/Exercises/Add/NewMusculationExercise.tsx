@@ -5,6 +5,8 @@ import BodyPartsController from "@/Controllers/Musculation/BodyPartsController";
 import ExerciseTypesController from "@/Controllers/Musculation/ExerciseTypesController";
 import MusculationExercise from "@/Models/Musculation/MusculationExercise";
 import MusculationExercisesController from "@/Controllers/Musculation/MusculationExercisesController";
+import SportController from "@/Controllers/Sport/SportController";
+import {Utils} from "@/Utils/Utils";
 
 export function NewMusculationExercise() {
 	const [bodyParts, setBodyParts] = useState<BodyPartType[]>([]);
@@ -28,7 +30,14 @@ export function NewMusculationExercise() {
 	};
 
 	const save = () => {
-		MusculationExercisesController.save(newExercise);
+		try {
+			MusculationExercisesController.save(newExercise);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import SportType from "@/Models/Sport/SportType";
 import SportController from "@/Controllers/Sport/SportController";
+import BikeSessionsController from "@/Controllers/Bike/BikeSessionsController";
+import {Utils} from "@/Utils/Utils";
 
 export function NewSportType() {
 	const [sportType, setSportType] = useState<SportType>(new SportType());
@@ -10,7 +12,14 @@ export function NewSportType() {
 	};
 
 	const save = () => {
-		SportController.saveSportType(sportType);
+		try {
+			SportController.saveSportType(sportType);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	return (

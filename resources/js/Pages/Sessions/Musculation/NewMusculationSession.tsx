@@ -8,6 +8,7 @@ import BodyPartType from "@/Models/Musculation/BodyPartType";
 import MusculationSessionsController from "@/Controllers/Musculation/MusculationSessionsController";
 import Exercise from "@/Pages/Sessions/Musculation/Components/Exercise";
 import Elastic from "@/Models/Musculation/Elastic";
+import RunningSessionsController from "@/Controllers/Running/RunningSessionsController";
 
 export function NewMusculationSession() {
 	const [bodyPart, setBodyPart] = useState<BodyPartType | null>(null);
@@ -79,7 +80,14 @@ export function NewMusculationSession() {
 	};
 
 	const save = async () => {
-		await MusculationSessionsController.save(sessionExercises, bodyPart?.id as string, date);
+		try {
+			await MusculationSessionsController.save(sessionExercises, bodyPart?.id as string, date);
+			Utils.successNotification({message: "Sauvegarde réussie !"});
+		}
+		catch (error)
+		{
+			Utils.errorNotification({message: "Erreur lors de la sauvegarde."});
+		}
 	};
 
 	const handleLastSessionCopy = () => {
