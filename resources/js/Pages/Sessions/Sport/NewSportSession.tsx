@@ -12,7 +12,7 @@ export function NewSportSession() {
 	useEffect(() => {
 		const fetchSportTypes = async () => {
 			const fetchedSportTypes = await SportController.getSportTypes();
-			const initialSession = Object.assign(new SportSession(), { sport_type: fetchedSportTypes[0] });
+			const initialSession = Object.assign(new SportSession(), { sport_type_id: fetchedSportTypes[0].id });
 
 			setSportTypes(fetchedSportTypes);
 			setSportSession(initialSession);
