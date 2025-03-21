@@ -10,6 +10,7 @@ import Menu from "@/Pages/Components/Menu";
 
 import React from "react";
 import {ReactNotifications} from "react-notifications-component";
+import {Footer} from "@/Footer";
 
 
 const appName = import.meta.env.VITE_APP_NAME || "Training";
@@ -25,6 +26,7 @@ createInertiaApp({
 				<ReactNotifications />
 				<Menu />
 				<App {...props} />
+				<Footer/>
 			</ContextProvider>,
 		);
 	},
