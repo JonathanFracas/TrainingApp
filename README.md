@@ -58,6 +58,7 @@ A la racine du projet executer les commandes suivantes :
 - Créer un model php : php artisan make:model ClassName -m
 - Migrations (permet de créer/modifier les tables) : php artisan migrate
 - Créer un controlleur : php artisan make:controller TableNameController
+- ./vendor/bin/pint
 
 
 # TODO
