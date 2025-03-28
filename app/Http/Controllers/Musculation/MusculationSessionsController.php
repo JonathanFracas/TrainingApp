@@ -52,15 +52,10 @@ class MusculationSessionsController extends Controller
             ->where('body_part_id', '=', $body_part_id)
             ->first();
 
-        /**
-         * @var MusculationSessionExercise $last_musculation_session
-         */
-        $last_musculation_session = MusculationSessionExercise::query()
+        return MusculationSessionExercise::query()
             ->with('musculation_exercise')
             ->where('session_number', '=', $last_session_number->last_session_number)
             ->get();
-
-        return $last_musculation_session;
     }
 
     public function copyBySessionNumber(int $sessionNumber)
